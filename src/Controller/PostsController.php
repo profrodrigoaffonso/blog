@@ -1,4 +1,5 @@
 <?php
+die;
 namespace App\Controller;
 
 use App\Controller\AppController;
