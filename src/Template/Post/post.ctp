@@ -21,7 +21,7 @@
 
   <!-- Post Content -->
 
-  <?= nl2br($post->text)?>  
+  <?= ($post->text)?>  
 
   
 
