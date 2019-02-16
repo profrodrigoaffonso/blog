@@ -10,7 +10,34 @@ class PostController extends AppController
     {
     	$this->loadModel("Posts");
 
-    	$posts = $this->Posts->find();
+        $where = [];
+
+        if(@$_GET['categoria']!=''){
+            $where['Categories.name']=$_GET['categoria'];
+        }
+
+    	$posts = $this->Posts->find()
+            ->join([
+                'CategoriesPosts'=>[
+                    'table'=>'categories_posts',
+                    'type'=>'INNER',
+                    'conditions'=>[
+                        'Posts.id = CategoriesPosts.post_id'
+                    ]
+                ],
+                'Categories'=>[
+                    'table'=>'categories',
+                    'type'=>'INNER',
+                    'conditions'=>[
+                        'CategoriesPosts.category_id = Categories.id'
+                    ]
+                ]
+            ])
+            ->where($where);
+
+             // debug($posts);die;
+
+            
 
     	$posts = $this->paginate($posts);
 

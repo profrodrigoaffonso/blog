@@ -9,7 +9,7 @@
         <div class="col-lg-6">
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="?search=<?=$category?>"><?=$category?></a>
+              <a href="?categoria=<?=$category?>"><?=$category?></a>
             </li>
            
           </ul>
